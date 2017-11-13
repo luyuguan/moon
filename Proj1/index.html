@@ -7,7 +7,8 @@
 		<script src="js/vue.min.js"></script>
 		<style>
 			body {
-				margin: 0 auto
+				margin: 0 auto;
+				background: #a4a4a4;
 			}
 			
 			.window {
@@ -71,6 +72,12 @@
 				color: #fffae2;
 				font-size: 18px;
 			}
+			
+			button {
+				background: transparent;
+				border: 0;
+				outline:0;
+			}
 		</style>
 	</head>
 
@@ -87,9 +94,9 @@
 				<div class="line"></div>
 			</div>
 			<div class="login">
-				<a href="javascript:void(0)" onclick="login()">
+				<button onclick="login()">
 					<img src="img/forward.png" />
-				</a>
+				</button>
 			</div>
 			<div class="signup">
 				<a href="javascript:void(0)">注册账号</a>
@@ -101,8 +108,8 @@
 		var app = new Vue({
 			el: "#app",
 			data: {
-				user: "",
-				pswd: ""
+				user: "123",
+				pswd: "321"
 			}
 		})
 
@@ -129,8 +136,11 @@
 			req.onload = function() {
 //				window.location.href = "http://www.baidu.com"
 			}
-			req.open('post', 'www.baidu.com', true)
-			req.send("param"={user:app.user, pswd:app.pswd})
+			req.open('post', 'http://localhost:2000/mtd', true)
+			var fdata = new FormData()
+			fdata.append('param','123')
+			req.setRequestHeader('Content-Type','text/plain;charset=UTF-8');
+			req.send('{data:"1234"}')
 		}
 		
 		function strLength(str) {
