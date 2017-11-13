@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.min.js"></script>
+		<style>
+			body {
+				margin: 0 auto
+			}
+			
+			.window {
+				background: #a4a4a4;
+				width: 360px;
+				height: 640px;
+				margin: 0 auto
+			}
+			
+			.head {
+				height: 115px
+			}
+			
+			.input {
+				padding-left: 32px;
+				color: #746060;
+				height: 38px;
+				margin: 0 auto
+			}
+			
+			input {
+				text-align: left;
+				font-size: 26px;
+				height: 36px;
+				width: 300px;
+				background: #a4a4a4;
+				color: #ede8e8;
+				outline: 0px;
+				border: 0;
+				width: 200px;
+				padding-left: 6px;
+			}
+			
+			.line {
+				height: 2px;
+				width: 300px;
+				background: #4a6868
+			}
+			
+			.span {
+				height: 20px
+			}
+			
+			.login {
+				margin-left: 270px;
+				margin-top: 30px;
+				height: 80px
+			}
+			
+			.login a img {
+				height: 50px, width: 50px;
+			}
+			
+			.signup {
+				margin-top: 30px;
+				margin-left: 45px;
+			}
+			
+			.signup a {
+				text-decoration: none;
+				color: #fffae2;
+				font-size: 18px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" class="window">
+			<div class="head"></div>
+			<div class="input">
+				<input type="text" placeholder="账号" v-model="user" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"></input>
+				<div class="line"></div>
+			</div>
+			<div class="span"></div>
+			<div class="input">
+				<input type="password" placeholder="密码" v-model="pswd"></input>
+				<div class="line"></div>
+			</div>
+			<div class="login">
+				<a href="javascript:void(0)" onclick="login()">
+					<img src="img/forward.png" />
+				</a>
+			</div>
+			<div class="signup">
+				<a href="javascript:void(0)">注册账号</a>
+			</div>
+
+		</div>
+	</body>
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				user: "",
+				pswd: ""
+			}
+		})
+
+		function ret() {
+			if(this.status == 404) {
+				alert('return')
+				app.show = false
+			}
+		}
+
+		function login() {
+			if(app.user == "")
+			{
+				alert("账号为空")
+				return
+			}
+			if(app.pswd == "")
+			{
+				alert("密码为空")
+				return
+			}
+			alert("" + strLength(app.user) + " " + strLength(app.pswd))
+			var req = new XMLHttpRequest()
+			req.onload = function() {
+//				window.location.href = "http://www.baidu.com"
+			}
+			req.open('post', 'www.baidu.com', true)
+			req.send("param"={user:app.user, pswd:app.pswd})
+		}
+		
+		function strLength(str) {
+			var reg = /[a-zA-Z0-9]/g;
+			return str.match(reg).length
+		}
+	</script>
+
+</html>

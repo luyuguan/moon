@@ -19,6 +19,16 @@
 			.content .name{line-height: 26px;margin-top:13px;float:left;margin-left:29px;color:#b1b1b1}
 			.content .number{line-height: 26px;margin-top:13px;float:right;margin-right:40px;color:#8d8585}
 			.contentlinebottom{width:670px;height:1px;margin-left:22px;margin-right:20px;background: #d6d6d6;}
+			.video {padding-top:20px}
+			video::-internal-media-controls-download-button {
+    				display:none;
+			}
+			video::-webkit-media-controls-enclosure {
+    				overflow:hidden;
+			}
+			video::-webkit-media-controls-panel {
+    				width: calc(100% + 30px); 
+			}
 		</style>
 	</head>
 	<body>
@@ -37,6 +47,9 @@
 					</div>
 					<div class="contentlinebottom"></div>
 				</div>
+			</div>
+			<div class="video">
+				<video src="video/seve.mp4" width="720px" controls="controls"></video>
 			</div>
 		</div>
 	</body>
